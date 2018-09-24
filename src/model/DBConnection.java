@@ -40,6 +40,8 @@ public class DBConnection {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:bonapay.db");
+            System.out.println("In Connection");
+            System.out.println(connection);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -50,9 +52,11 @@ public class DBConnection {
 
     public Statement createStatement(Statement statement, Connection connection){
         try {
+            System.out.println(connection);
             statement = connection.createStatement();
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("Coonection error");
         }
         return statement;
     }

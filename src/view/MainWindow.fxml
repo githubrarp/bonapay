@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crudOper.ClienteCrud">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -61,7 +61,7 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <BorderPane prefHeight="374.4" prefWidth="640.0">
+        <BorderPane prefHeight="481.0" prefWidth="733.0">
             <top>
                 <Label alignment="TOP_LEFT" text="BonaPay" BorderPane.alignment="TOP_LEFT">
                     <font>
@@ -131,8 +131,8 @@
                     </children>
                 </VBox>
             </left>
-            <center>
-                <TabPane prefHeight="290.0" prefWidth="514.0" BorderPane.alignment="CENTER">
+         <center>
+                <TabPane prefHeight="304.0" prefWidth="471.0" BorderPane.alignment="CENTER">
                     <tabs>
                         <Tab text="Agregar Cliente">
                             <content>
@@ -176,7 +176,7 @@
                                                 <TextField fx:id="txtAddPhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                             </children>
                                         </GridPane>
-                                        <Button fx:id="btnAddClient" alignment="CENTER" layoutX="183.0" layoutY="223.0" mnemonicParsing="false" onAction="#justSimplePrintln" prefHeight="26.0" prefWidth="78.0" text="Agregar" textAlignment="CENTER">
+                                        <Button fx:id="btnAddClient" alignment="CENTER" layoutX="183.0" layoutY="223.0" mnemonicParsing="false" onAction="#insertClienteObject" prefHeight="26.0" prefWidth="78.0" text="Agregar" textAlignment="CENTER">
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
@@ -248,7 +248,7 @@
                         </Tab>
                     </tabs>
                 </TabPane>
-            </center>
+         </center>
         </BorderPane>
     </children>
 </VBox>

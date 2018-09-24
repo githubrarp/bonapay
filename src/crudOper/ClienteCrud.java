@@ -1,5 +1,7 @@
 package crudOper;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import model.Cliente;
 import model.DBConnection;
 
@@ -10,13 +12,16 @@ import java.sql.Statement;
 
 public class ClienteCrud {
 
-    Connection connection = null;
-    Statement statement = null;
+    Connection connection;
+    Statement statement;
 
     public ClienteCrud(){
+        this.connection = null;
+        this.statement = null;
     }
 
-    public boolean insertarCliente(Cliente cliente){
+
+    public void insertarCliente(Cliente cliente){
 
         DBConnection dbConnection = new DBConnection();
 
@@ -35,11 +40,11 @@ public class ClienteCrud {
             this.statement.executeUpdate(insertQuery);
             statement.close();
             connection.close();
-            return true;
+ //           return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+ //       return false;
     }
 
     public boolean updateCliente(Cliente cliente){
