@@ -119,7 +119,7 @@ public class ClienteCrud {
         String homeNumber = cliente.getHomeNumber();
         String phoneNumber = cliente.getPhoneNumber();
 
-        String matchCase;
+        String matchCase = "";
         List<Cliente> resultOfSearching = new ArrayList<>();
 
         ResultSet resultSet;
@@ -132,7 +132,8 @@ public class ClienteCrud {
         String searchQueryByHomeNumber = "SELECT * FROM Cliente WHERE homeNumber= '" + homeNumber + "';";
         String searchQueryByPhoneNumber = "SELECT * FROM Cliente WHERE phoneNumber= '" + phoneNumber + "';";
 
-        if (firstName.length() > 0) {
+
+        if(firstName.length() > 0) {
             matchCase = searchQueryByFirstName;
         }else if (lastName.length() > 0){
             matchCase = searchQueryByLastName;

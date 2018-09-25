@@ -2,6 +2,7 @@ package view;
 
 import crudOper.ClienteCrud;
 import crudOper.PagoCrud;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,10 +56,14 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tblResultListingCliente = FXCollections.observableArrayList();
-        Cliente cc = new Cliente("Jon", "Snow", "Wintefell");
-        tblResultListingCliente.add(cc);
-        //System.out.println(tblResultListingCliente);
         tblResultListing.setItems(tblResultListingCliente);
+
+        columnFirstName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFirstName()));
+        columnLastName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLastName()));
+        columnHomeNumber.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getHomeNumber()));
+        columnPhoneNumber.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPhoneNumber()));
+
+
         System.out.println("It works !");
 
         this.clienteCrud = new ClienteCrud();
@@ -87,7 +92,7 @@ public class Controller implements Initializable {
         String phoneNumber = txtSearchPhoneNumber.getText();
 
         Cliente cliente = new Cliente(firstName, lastName, homeNumber);
-        if (phoneNumber.length() > 0){
+        if (phoneNumber != null || phoneNumber.length() > 0){
             cliente.setPhoneNumber(phoneNumber);
         }
 
@@ -95,8 +100,13 @@ public class Controller implements Initializable {
         System.out.println("DONT FORGET TO DELETE THIS LINE: but this is your Controller and I'm sending seraching criteria to ClienteCrud");
 
 
-
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(homeNumber);
+        System.out.println(phoneNumber);
+        //System.out.println(this.clienteCrud.searchCliente(cliente));
         List<Cliente> resultListing = this.clienteCrud.searchCliente(cliente);
+        tblResultListingCliente.removeAll(tblResultListingCliente);
 
         for (Cliente clientesInList: resultListing) {
             tblResultListingCliente.add(clientesInList);

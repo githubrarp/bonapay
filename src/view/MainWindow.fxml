@@ -238,7 +238,7 @@
                         </Tab>
                         <Tab text="Listado">
                             <content>
-                                <TableView fx:id="resultListing" prefHeight="312.0" prefWidth="466.0">
+                                <TableView fx:id="tblResultListing" prefHeight="312.0" prefWidth="466.0">
                                     <columns>
                                         <TableColumn fx:id="columnFirstName" prefWidth="164.00000610351526" text="Nombre" />
                                         <TableColumn fx:id="columnLastName" prefWidth="133.5999755859375" text="Apellido" />
