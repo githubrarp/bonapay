@@ -2,6 +2,7 @@ package crudOper;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import model.Cliente;
 import model.DBConnection;
 
@@ -9,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteCrud {
 
@@ -104,29 +107,60 @@ public class ClienteCrud {
         return true;
     }
 
-    public boolean searchCliente(Cliente cliente){
+    public List<Cliente> searchCliente(Cliente cliente){
 
         DBConnection dbConnection = new DBConnection();
 
         this.connection = dbConnection.getDriverConnection(this.connection);
         this.statement = dbConnection.createStatement(this.statement, this.connection);
 
+        String firstName = cliente.getFirstName();
+        String lastName = cliente.getLastName();
         String homeNumber = cliente.getHomeNumber();
+        String phoneNumber = cliente.getPhoneNumber();
+
+        String matchCase;
+        List<Cliente> resultOfSearching = new ArrayList<>();
 
         ResultSet resultSet;
         int idCliente = getClientId(homeNumber);
 
-        String searchQuery = "SELECT * FROM Cliente WHERE idCliente = " + idCliente + ";";
+        String searchQueryAll = "SELECT * FROM Cliente;";
+//        String searchQueryById = "SELECT * FROM Cliente WHERE idCliente = " + idCliente + ";";
+        String searchQueryByFirstName = "SELECT * FROM Cliente WHERE firstName= '" + firstName + "';";
+        String searchQueryByLastName = "SELECT * FROM Cliente WHERE lastName= '" + lastName + "';";
+        String searchQueryByHomeNumber = "SELECT * FROM Cliente WHERE homeNumber= '" + homeNumber + "';";
+        String searchQueryByPhoneNumber = "SELECT * FROM Cliente WHERE phoneNumber= '" + phoneNumber + "';";
+
+        if (firstName.length() > 0) {
+            matchCase = searchQueryByFirstName;
+        }else if (lastName.length() > 0){
+            matchCase = searchQueryByLastName;
+        }else if (homeNumber.length() > 0){
+            matchCase = searchQueryByHomeNumber;
+        }else if(phoneNumber.length() > 0){
+            matchCase = searchQueryByPhoneNumber;
+        }else{
+            matchCase = searchQueryAll;
+        }
+
+        System.out.println("MATCHCASE IS: " + matchCase);
+
 
         try{
-            resultSet = this.statement.executeQuery(searchQuery);
+            resultSet = this.statement.executeQuery(matchCase);
 
-            while (resultSet.next()){
-                System.out.println(
-                        resultSet.getInt("idCliente") + " " +
-                                resultSet.getString("firstName") + " " +
-                                resultSet.getString("homeNumber") + " " +
-                                resultSet.getString("phoneNumber"));
+            while (resultSet.next()) {
+                String whileFistName = resultSet.getString("firstName");
+                String whileLastName = resultSet.getString("lastName");
+                String whileHomeNumber = resultSet.getString("homeNumber");
+                String whilePhoneNumber = resultSet.getString("phoneNumber");
+
+                Cliente whileCliente = new Cliente(whileFistName, whileLastName, whileHomeNumber);
+                if (whilePhoneNumber != null || whilePhoneNumber.length() > 0){
+                    whileCliente.setPhoneNumber(whilePhoneNumber);
+                }
+                resultOfSearching.add(whileCliente);
             }
             statement.close();
             connection.close();
@@ -134,7 +168,7 @@ public class ClienteCrud {
             e.printStackTrace();
         }
 
-        return true;
+        return resultOfSearching;
     }
 
     public int getClientId(String homeNumber){

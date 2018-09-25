@@ -227,7 +227,7 @@
                                                 <TextField fx:id="txtSearchPhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                             </children>
                                         </GridPane>
-                                        <Button fx:id="btnSearchClient" alignment="CENTER" layoutX="183.0" layoutY="223.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Buscar" textAlignment="CENTER">
+                                        <Button fx:id="btnSearchClient" alignment="CENTER" layoutX="183.0" layoutY="223.0" mnemonicParsing="false" onAction="#searchMethod" prefHeight="26.0" prefWidth="78.0" text="Buscar" textAlignment="CENTER">
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
@@ -238,10 +238,12 @@
                         </Tab>
                         <Tab text="Listado">
                             <content>
-                                <TableView prefHeight="312.0" prefWidth="466.0">
+                                <TableView fx:id="resultListing" prefHeight="312.0" prefWidth="466.0">
                                     <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
+                                        <TableColumn fx:id="columnFirstName" prefWidth="164.00000610351526" text="Nombre" />
+                                        <TableColumn fx:id="columnLastName" prefWidth="133.5999755859375" text="Apellido" />
+                              <TableColumn fx:id="columnHomeNumber" maxWidth="205.60003662109375" prefWidth="72.79998779296875" text="Casa" />
+                              <TableColumn fx:id="columnPhoneNumber" maxWidth="211.9999938964844" prefWidth="103.9998779296875" text="Telefono" />
                                     </columns>
                                 </TableView>
                             </content>
