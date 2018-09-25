@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import javafx.event.*;
 import model.Cliente;
 
-import java.awt.event.ActionEvent;
 
 public class Main extends Application {//implements EventHandler<ActionEvent>  {
 

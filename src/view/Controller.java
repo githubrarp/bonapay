@@ -1,6 +1,7 @@
 package view;
 
 import crudOper.ClienteCrud;
+import crudOper.PagoCrud;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,12 +15,14 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     private ClienteCrud clienteCrud;
+//    private PagoCrud pagoCrud;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("It works !");
 
         this.clienteCrud = new ClienteCrud();
+//        this.pagoCrud = new PagoCrud();
 
     }
 
