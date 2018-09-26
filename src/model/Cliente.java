@@ -7,10 +7,20 @@ public class Cliente {
     private String homeNumber;
     private String phoneNumber;
 
+    public Cliente(){
+    }
+
     public Cliente(String firstName, String lastName, String homeNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.homeNumber = homeNumber;
+    }
+
+    public Cliente(String firstName, String lastName, String homeNumber, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.homeNumber = homeNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getFirstName() {

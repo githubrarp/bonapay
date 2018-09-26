@@ -1,7 +1,6 @@
 package view;
 
 import crudOper.ClienteCrud;
-import crudOper.PagoCrud;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,17 +12,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import model.Cliente;
-import model.DBConnection;
 
-import javax.sound.midi.Soundbank;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     private ClienteCrud clienteCrud;
-//    private PagoCrud pagoCrud;
 
     @FXML
     TextField txtAddName;
@@ -41,7 +36,7 @@ public class Controller implements Initializable {
     TextField txtSearchPhoneNumber;
     @FXML
     TableView<Cliente> tblResultListing;
-    ObservableList<Cliente> tblResultListingCliente;
+    ObservableList<Cliente> tblObservableResultListingCliente;
     @FXML
     TableColumn<Cliente, String> columnFirstName;
     @FXML
@@ -50,13 +45,22 @@ public class Controller implements Initializable {
     TableColumn<Cliente, String> columnHomeNumber;
     @FXML
     TableColumn<Cliente, String> columnPhoneNumber;
-
+    @FXML
+    Button btnEliminarCliente;
+    @FXML
+    TextField txtUpdateFirstName;
+    @FXML
+    TextField txtUpdateLastName;
+    @FXML
+    TextField txtUpdateHomeNumber;
+    @FXML
+    TextField txtUpdatePhoneNumber;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tblResultListingCliente = FXCollections.observableArrayList();
-        tblResultListing.setItems(tblResultListingCliente);
+        tblObservableResultListingCliente = FXCollections.observableArrayList();
+        tblResultListing.setItems(tblObservableResultListingCliente);
 
         columnFirstName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFirstName()));
         columnLastName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getLastName()));
@@ -67,8 +71,6 @@ public class Controller implements Initializable {
         System.out.println("It works !");
 
         this.clienteCrud = new ClienteCrud();
-//        this.pagoCrud = new PagoCrud();
-
     }
 
     @FXML
@@ -81,7 +83,6 @@ public class Controller implements Initializable {
         Cliente cliente = new Cliente(firstName, lastName, homeNumber);
 
         this.clienteCrud.insertarCliente(cliente);
-        System.out.println("Something" );
     }
 
     @FXML
@@ -96,20 +97,67 @@ public class Controller implements Initializable {
             cliente.setPhoneNumber(phoneNumber);
         }
 
-//        this.clienteCrud.searchCliente(cliente);
-        System.out.println("DONT FORGET TO DELETE THIS LINE: but this is your Controller and I'm sending seraching criteria to ClienteCrud");
-
-
         System.out.println(firstName);
         System.out.println(lastName);
         System.out.println(homeNumber);
         System.out.println(phoneNumber);
-        //System.out.println(this.clienteCrud.searchCliente(cliente));
         List<Cliente> resultListing = this.clienteCrud.searchCliente(cliente);
-        tblResultListingCliente.removeAll(tblResultListingCliente);
+        tblObservableResultListingCliente.removeAll(tblObservableResultListingCliente);
 
         for (Cliente clientesInList: resultListing) {
-            tblResultListingCliente.add(clientesInList);
+            tblObservableResultListingCliente.add(clientesInList);
+        }
+    }
+
+    @FXML
+    private void eliminarCliente(ActionEvent actionEvent){
+        String firstName = tblResultListing.getSelectionModel().getSelectedItem().getFirstName();
+        String lastName = tblResultListing.getSelectionModel().getSelectedItem().getLastName();
+        String homeNumber = tblResultListing.getSelectionModel().getSelectedItem().getHomeNumber();
+        this.clienteCrud.removeCliente(homeNumber);
+
+        Cliente cliente = new Cliente(firstName, lastName, homeNumber);
+        ObservableList<Cliente> temporaryList = FXCollections.observableArrayList();
+        temporaryList.add(cliente);
+        tblObservableResultListingCliente.removeAll(temporaryList);
+
+        System.out.println(tblObservableResultListingCliente);
+
+    }
+
+
+    @FXML
+    private void editarCliente(ActionEvent actionEvent){
+        String firstName = tblResultListing.getSelectionModel().getSelectedItem().getFirstName();
+        String lastName = tblResultListing.getSelectionModel().getSelectedItem().getLastName();
+        String homeNumber = tblResultListing.getSelectionModel().getSelectedItem().getHomeNumber();
+        String phoneNumber = tblResultListing.getSelectionModel().getSelectedItem().getPhoneNumber();
+        txtUpdateFirstName.setText(firstName);
+        txtUpdateLastName.setText(lastName);
+        txtUpdateHomeNumber.setText(homeNumber);
+        txtUpdatePhoneNumber.setText(phoneNumber);
+    }
+
+    @FXML
+    private void actualizarCliente(ActionEvent actionEvent){
+        String firstName = txtUpdateFirstName.getText();
+        String lastName = txtUpdateLastName.getText();
+        String homeNumber = txtUpdateHomeNumber.getText();
+        String phoneNumber = txtUpdatePhoneNumber.getText();
+
+        Cliente cliente = new Cliente(firstName, lastName, homeNumber, phoneNumber);
+        this.clienteCrud.updateCliente(cliente);
+
+
+        tblObservableResultListingCliente = FXCollections.observableArrayList();
+        tblResultListing.setItems(tblObservableResultListingCliente);
+        Cliente demoCliente = new Cliente("","","","");
+        List<Cliente> fecthClienteTable = this.clienteCrud.searchCliente(demoCliente);
+
+        System.out.println("The printed client: " + cliente.toString());
+
+        for (Cliente clienteItem: fecthClienteTable) {
+            tblObservableResultListingCliente.add(clienteItem);
         }
 
     }

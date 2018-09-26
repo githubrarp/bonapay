@@ -20,48 +20,49 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller">
-    <children>
-        <MenuBar VBox.vgrow="NEVER">
-            <menus>
-                <Menu mnemonicParsing="false" text="File">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="New" />
-                        <MenuItem mnemonicParsing="false" text="Open…" />
-                        <Menu mnemonicParsing="false" text="Open Recent" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                        <MenuItem mnemonicParsing="false" text="Save" />
-                        <MenuItem mnemonicParsing="false" text="Save As…" />
-                        <MenuItem mnemonicParsing="false" text="Revert" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Preferences…" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Quit" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="Undo" />
-                        <MenuItem mnemonicParsing="false" text="Redo" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Cut" />
-                        <MenuItem mnemonicParsing="false" text="Copy" />
-                        <MenuItem mnemonicParsing="false" text="Paste" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Select All" />
-                        <MenuItem mnemonicParsing="false" text="Unselect All" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-        <BorderPane prefHeight="481.0" prefWidth="733.0">
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller">
+   <children>
+          <MenuBar prefHeight="600.4" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <menus>
+                  <Menu mnemonicParsing="false" text="File">
+                      <items>
+                          <MenuItem mnemonicParsing="false" text="New" />
+                          <MenuItem mnemonicParsing="false" text="Open…" />
+                          <Menu mnemonicParsing="false" text="Open Recent" />
+                          <SeparatorMenuItem mnemonicParsing="false" />
+                          <MenuItem mnemonicParsing="false" text="Close" />
+                          <MenuItem mnemonicParsing="false" text="Save" />
+                          <MenuItem mnemonicParsing="false" text="Save As…" />
+                          <MenuItem mnemonicParsing="false" text="Revert" />
+                          <SeparatorMenuItem mnemonicParsing="false" />
+                          <MenuItem mnemonicParsing="false" text="Preferences…" />
+                          <SeparatorMenuItem mnemonicParsing="false" />
+                          <MenuItem mnemonicParsing="false" text="Quit" />
+                      </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Edit">
+                      <items>
+                          <MenuItem mnemonicParsing="false" text="Undo" />
+                          <MenuItem mnemonicParsing="false" text="Redo" />
+                          <SeparatorMenuItem mnemonicParsing="false" />
+                          <MenuItem mnemonicParsing="false" text="Cut" />
+                          <MenuItem mnemonicParsing="false" text="Copy" />
+                          <MenuItem mnemonicParsing="false" text="Paste" />
+                          <MenuItem mnemonicParsing="false" text="Delete" />
+                          <SeparatorMenuItem mnemonicParsing="false" />
+                          <MenuItem mnemonicParsing="false" text="Select All" />
+                          <MenuItem mnemonicParsing="false" text="Unselect All" />
+                      </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                      <items>
+                          <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                      </items>
+                  </Menu>
+              </menus>
+          </MenuBar>
+
+        <BorderPane layoutY="34.0" prefHeight="573.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
             <top>
                 <Label alignment="TOP_LEFT" text="BonaPay" BorderPane.alignment="TOP_LEFT">
                     <font>
@@ -80,27 +81,46 @@
                 </Label>
             </bottom>
             <left>
-                <VBox prefHeight="312.0" prefWidth="170.0" BorderPane.alignment="CENTER">
+                <VBox BorderPane.alignment="CENTER">
                     <children>
-                        <VBox prefHeight="154.0" prefWidth="154.0">
+                        <VBox prefHeight="230.0" prefWidth="154.0">
                             <children>
                                 <Label text="Clientes:">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
+                           <padding>
+                              <Insets bottom="10.0" top="20.0" />
+                           </padding>
                                 </Label>
-                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                <VBox alignment="CENTER">
                                     <children>
-                                        <Button maxHeight="-Infinity" mnemonicParsing="false" prefWidth="88.0" text="Agregar">
+                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Agregar">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
                                         </Button>
-                                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="87.0" text="Buscar">
+                                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Buscar">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
                                         </Button>
+                              <Button fx:id="btnEditarCliente" layoutX="44.0" layoutY="20.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="40.0" prefWidth="100.0" text="Editar">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnEliminarCliente" layoutX="44.0" layoutY="80.0" mnemonicParsing="false" onAction="#eliminarCliente" prefHeight="40.0" prefWidth="100.0" text="Eliminar">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
                                     </children>
                                 </VBox>
                             </children>
@@ -111,28 +131,18 @@
                                     <font>
                                         <Font size="24.0" />
                                     </font>
+                           <padding>
+                              <Insets bottom="20.0" />
+                           </padding>
                                 </Label>
-                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-                                    <children>
-                                        <Button maxHeight="-Infinity" mnemonicParsing="false" prefWidth="88.0" text="Agregar">
-                                            <font>
-                                                <Font size="18.0" />
-                                            </font>
-                                        </Button>
-                                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="87.0" text="Buscar">
-                                            <font>
-                                                <Font size="18.0" />
-                                            </font>
-                                        </Button>
-                                    </children>
-                                </VBox>
+                                <VBox alignment="CENTER" />
                             </children>
                         </VBox>
                     </children>
                 </VBox>
             </left>
          <center>
-                <TabPane prefHeight="304.0" prefWidth="471.0" BorderPane.alignment="CENTER">
+                <TabPane BorderPane.alignment="CENTER">
                     <tabs>
                         <Tab text="Agregar Cliente">
                             <content>
@@ -236,9 +246,60 @@
                                 </AnchorPane>
                             </content>
                         </Tab>
+                  <Tab text="Editar Cliente">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <GridPane layoutX="13.0" layoutY="35.0" prefHeight="162.0" prefWidth="382.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="184.5999755859375" minWidth="10.0" prefWidth="140.5999755859375" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.4000244140625" minWidth="10.0" prefWidth="241.4000244140625" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label fx:id="lblUpdateFirstName" text="Nombre:">
+                                       <padding>
+                                          <Insets right="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="lblUpdateLastName" layoutX="10.0" layoutY="22.0" text="Apellido" GridPane.rowIndex="1">
+                                       <padding>
+                                          <Insets right="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="lblUpdateHomeNumber" layoutX="10.0" layoutY="22.0" text="Numero de casa:" GridPane.rowIndex="2">
+                                       <padding>
+                                          <Insets right="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="lblUpdatePhoneNumber" layoutX="10.0" layoutY="65.0" text="Numero de teléfono" GridPane.rowIndex="3">
+                                       <padding>
+                                          <Insets right="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="txtUpdateFirstName" GridPane.columnIndex="1" />
+                                    <TextField fx:id="txtUpdateLastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtUpdateHomeNumber" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="txtUpdatePhoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                              <Button fx:id="btnUpdateClient" alignment="CENTER" layoutX="183.0" layoutY="223.0" mnemonicParsing="false" onAction="#actualizarCliente" prefHeight="30.0" prefWidth="122.0" text="Actualizar" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
                         <Tab text="Listado">
                             <content>
-                                <TableView fx:id="tblResultListing" prefHeight="312.0" prefWidth="466.0">
+                                <TableView fx:id="tblResultListing" prefHeight="203.0" prefWidth="646.0">
                                     <columns>
                                         <TableColumn fx:id="columnFirstName" prefWidth="164.00000610351526" text="Nombre" />
                                         <TableColumn fx:id="columnLastName" prefWidth="133.5999755859375" text="Apellido" />
@@ -252,5 +313,5 @@
                 </TabPane>
          </center>
         </BorderPane>
-    </children>
-</VBox>
+   </children>
+</AnchorPane>

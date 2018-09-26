@@ -77,20 +77,21 @@ public class ClienteCrud {
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Doesn't matter if phone number is null");
         }
 
 
         return true;
     }
 
-    public boolean removeCliente(Cliente cliente){
+    public boolean removeCliente(String homeNumber){
 
         DBConnection dbConnection = new DBConnection();
 
         this.connection = dbConnection.getDriverConnection(this.connection);
         this.statement = dbConnection.createStatement(this.statement, this.connection);
 
-        String homeNumber = cliente.getHomeNumber();
+//        String homeNumber = cliente.getHomeNumber();
 
         int idCliente = getClientId(homeNumber);
 
@@ -126,12 +127,21 @@ public class ClienteCrud {
         int idCliente = getClientId(homeNumber);
 
         String searchQueryAll = "SELECT * FROM Cliente;";
-//        String searchQueryById = "SELECT * FROM Cliente WHERE idCliente = " + idCliente + ";";
         String searchQueryByFirstName = "SELECT * FROM Cliente WHERE firstName= '" + firstName + "';";
         String searchQueryByLastName = "SELECT * FROM Cliente WHERE lastName= '" + lastName + "';";
         String searchQueryByHomeNumber = "SELECT * FROM Cliente WHERE homeNumber= '" + homeNumber + "';";
         String searchQueryByPhoneNumber = "SELECT * FROM Cliente WHERE phoneNumber= '" + phoneNumber + "';";
 
+
+        if(firstName==null){
+            System.out.println("Null 1");
+        }else if(lastName == null) {
+            System.out.println("Null 2");
+        } else if(homeNumber==null){
+            System.out.println("Null 3");
+        }else if(phoneNumber==null){
+            System.out.println("Null 4");
+        }
 
         if(firstName.length() > 0) {
             matchCase = searchQueryByFirstName;
